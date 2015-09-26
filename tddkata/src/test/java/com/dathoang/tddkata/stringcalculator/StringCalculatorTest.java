@@ -62,6 +62,7 @@ public class StringCalculatorTest {
 
     @Test
     public void TestAddWithBiggerOneThousandNumbers(){
+        Assert.assertEquals(1009, StringCalculator.Add("7,1000,2"));
         Assert.assertEquals(5, StringCalculator.Add("3,7777,1,2222,1"));
         Assert.assertEquals(16, StringCalculator.Add("//*\n5*1007*11*9999"));
     }
