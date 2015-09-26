@@ -68,14 +68,14 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void TestAddWithAnyDelimeterWhichHasAnyLength(){
+    public void TestAddWithAnyDelimiterWhichHasAnyLength(){
         Assert.assertEquals(16, StringCalculator.Add("//[$$$]\n5$$$11"));
         Assert.assertEquals(78, StringCalculator.Add("//[**]\n5**11**3**4**55"));
         Assert.assertEquals(123, StringCalculator.Add("//[$%&*]\n1$%&*2$%&*3$%&*4$%&*5$%&*6$%&*7$%&*8$%&*9$%&*0$%&*5$%&*11$%&*3$%&*4$%&*55"));
     }
 
     @Test
-    public void TestAddWithMultipleDelimeters(){
+    public void TestAddWithMultipleDelimiters(){
         Assert.assertEquals(78, StringCalculator.Add("//[;][*]\n5;11*3*4;55"));
         Assert.assertEquals(123, StringCalculator.Add("//[*][$][,][.]\n1*2$3*4*5,6*7*8$9*0.5$11*3.4,55"));
     }

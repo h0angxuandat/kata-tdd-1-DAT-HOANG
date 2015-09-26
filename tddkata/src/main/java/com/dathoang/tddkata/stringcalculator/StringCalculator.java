@@ -12,13 +12,13 @@ public class StringCalculator {
 
     private static final String REGEX = "[,\n]";
     private static final int MAX_RATE = 1000;
-    private static final String SIMPLE_DELIMETER_PREFIX = "//";
-    private static final String COMPLEX_DELIMETER_PREFIX = "//[";
-    private static final int BEGIN_SIMPLE_DELIMETER_INDEX = 2;
-    private static final int BEGIN_COMPLEX_DELIMETER_INDEX = 3;
+    private static final String SIMPLE_DELIMITER_PREFIX = "//";
+    private static final String COMPLEX_DELIMITER_PREFIX = "//[";
+    private static final int BEGIN_SIMPLE_DELIMITER_INDEX = 2;
+    private static final int BEGIN_COMPLEX_DELIMITER_INDEX = 3;
     private static final int BEGIN_SIMPLE_NUMBERS_INDEX = 4;
-    private static final int END_SIMPLE_DELIMETER_INDEX = 3;
-    private static final String END_OF_DELIMETER_STRING = "]\n";
+    private static final int END_SIMPLE_DELIMITER_INDEX = 3;
+    private static final String END_OF_DELIMITER_STRING = "]\n";
     private static final String REGEX_FORMATED_STRING = "\\";
     public static final String REGEX_OR = "|";
     public static final String DELIMITER_PARTS = "\\/\\/\\[|\\]\\[|\\]\\n";
@@ -33,64 +33,64 @@ public class StringCalculator {
         String delimiter = REGEX;
 
         if(HasSimpleDefinedDelimiter(numbers)){
-            delimiter = GetDefiniedDelimeter(numbers);
+            delimiter = GetDefiniedDelimiter(numbers);
             numbers = GetStringOfNumbers(numbers);
         }
 
         if(HasComplexDefinedDelimiter(numbers)){
-            delimiter = GetComplexDefiniedDelimeter(numbers);
+            delimiter = GetComplexDefiniedDelimiter(numbers);
             numbers = GetComplexStringOfNumbers(numbers);
         }
 
         if(HasMultipleDefinedDelimiter(numbers)){
-            delimiter = GetMultipleDefiniedDelimeter(numbers);
+            delimiter = GetMultipleDefiniedDelimiter(numbers);
             numbers = GetComplexStringOfNumbers(numbers);
         }
 
         return GetSumFromArray(numbers.split(delimiter));
     }
 
-    private static String GetMultipleDefiniedDelimeter(String numbers) {
-        int amountOfDelimeters = GetAmountOfDelimeters(numbers);
-        String[] delimetersArray = GetDelimetersArray(numbers, amountOfDelimeters);
-        return BuildMultipleDelimeter(delimetersArray);
+    private static String GetMultipleDefiniedDelimiter(String numbers) {
+        int amountOfDelimiters = GetAmountOfDelimiters(numbers);
+        String[] delimitersArray = GetDelimitersArray(numbers, amountOfDelimiters);
+        return BuildMultipleDelimiter(delimitersArray);
     }
 
-    private static String BuildMultipleDelimeter(String[] delimetersArray) {
+    private static String BuildMultipleDelimiter(String[] delimitersArray) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < delimetersArray.length; i++){
-            stringBuilder.append(MakeFormatedDelimiter(delimetersArray[i]));
-            if(delimetersArray.length - 1 > i){
+        for (int i = 0; i < delimitersArray.length; i++){
+            stringBuilder.append(MakeFormatedDelimiter(delimitersArray[i]));
+            if(delimitersArray.length - 1 > i){
                 stringBuilder.append(REGEX_OR);
             }
         }
         return stringBuilder.toString();
     }
 
-    private static String[] GetDelimetersArray(String numbers, int amountOfDelimeters) {
-        String[] delimetersArray = new String[amountOfDelimeters];
+    private static String[] GetDelimitersArray(String numbers, int amountOfDelimiters) {
+        String[] delimitersArray = new String[amountOfDelimiters];
         String[] splitResault = numbers.split(DELIMITER_PARTS);
 
-        for(int i = 1; i <= amountOfDelimeters; i++){
-            delimetersArray[i - 1] = splitResault[i];
+        for(int i = 1; i <= amountOfDelimiters; i++){
+            delimitersArray[i - 1] = splitResault[i];
         }
-        return delimetersArray;
+        return delimitersArray;
     }
 
-    private static int GetAmountOfDelimeters(String numbers) {
+    private static int GetAmountOfDelimiters(String numbers) {
         return numbers.split(REGEX_DELIMITERS_SEPARATOR).length;
     }
 
     private static boolean HasMultipleDefinedDelimiter(String numbers) {
-        return numbers.startsWith(COMPLEX_DELIMETER_PREFIX) && numbers.contains(DELIMITERS_SEPARATOR_STRING);
+        return numbers.startsWith(COMPLEX_DELIMITER_PREFIX) && numbers.contains(DELIMITERS_SEPARATOR_STRING);
     }
 
     private static String GetComplexStringOfNumbers(String numbers) {
-        return numbers.split(END_OF_DELIMETER_STRING)[1];
+        return numbers.split(END_OF_DELIMITER_STRING)[1];
     }
 
-    private static String GetComplexDefiniedDelimeter(String numbers) {
-        char[] delimiter =  numbers.substring(BEGIN_COMPLEX_DELIMETER_INDEX, numbers.indexOf(END_OF_DELIMETER_STRING)).toCharArray();
+    private static String GetComplexDefiniedDelimiter(String numbers) {
+        char[] delimiter =  numbers.substring(BEGIN_COMPLEX_DELIMITER_INDEX, numbers.indexOf(END_OF_DELIMITER_STRING)).toCharArray();
         return MakeFormatedDelimiter(delimiter);
     }
 
@@ -108,19 +108,19 @@ public class StringCalculator {
     }
 
     private static boolean HasComplexDefinedDelimiter(String numbers) {
-        return numbers.startsWith(COMPLEX_DELIMETER_PREFIX) && !numbers.contains("][");
+        return numbers.startsWith(COMPLEX_DELIMITER_PREFIX) && !numbers.contains("][");
     }
 
     private static String GetStringOfNumbers(String numbers) {
         return numbers.substring(BEGIN_SIMPLE_NUMBERS_INDEX, numbers.length());
     }
 
-    private static String GetDefiniedDelimeter(String numbers) {
-        return MakeFormatedDelimiter(numbers.substring(BEGIN_SIMPLE_DELIMETER_INDEX, END_SIMPLE_DELIMETER_INDEX));
+    private static String GetDefiniedDelimiter(String numbers) {
+        return MakeFormatedDelimiter(numbers.substring(BEGIN_SIMPLE_DELIMITER_INDEX, END_SIMPLE_DELIMITER_INDEX));
     }
 
     private static boolean HasSimpleDefinedDelimiter(String numbers) {
-        return numbers.startsWith(SIMPLE_DELIMETER_PREFIX) && !numbers.startsWith(COMPLEX_DELIMETER_PREFIX);
+        return numbers.startsWith(SIMPLE_DELIMITER_PREFIX) && !numbers.startsWith(COMPLEX_DELIMITER_PREFIX);
     }
 
     private static int GetSumFromArray(String[] numbers) {
