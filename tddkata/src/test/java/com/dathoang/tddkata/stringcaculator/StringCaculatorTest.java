@@ -1,8 +1,6 @@
 package com.dathoang.tddkata.stringcaculator;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -37,5 +35,12 @@ public class StringCaculatorTest {
     @Test
     public void TestAddWithNewlineBetweenNumbers(){
         Assert.assertEquals(45, StringCaculator.Add("1,2,3\n4,5,6,7\n8,9\n0"));
+    }
+
+    @Test
+    public void TestAddWithDifferentDefinedDelimiters(){
+        Assert.assertEquals(16, StringCaculator.Add("//$\n5$11"));
+        Assert.assertEquals(78, StringCaculator.Add("//;\n5;11;3;4;55"));
+        Assert.assertEquals(123, StringCaculator.Add("//*\n1*2*3*4*5*6*7*8*9*0*5*11*3*4*55"));
     }
 }
