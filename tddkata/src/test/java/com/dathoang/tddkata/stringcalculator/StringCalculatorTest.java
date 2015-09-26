@@ -73,4 +73,10 @@ public class StringCalculatorTest {
         Assert.assertEquals(78, StringCalculator.Add("//[**]\n5**11**3**4**55"));
         Assert.assertEquals(123, StringCalculator.Add("//[$%&*]\n1$%&*2$%&*3$%&*4$%&*5$%&*6$%&*7$%&*8$%&*9$%&*0$%&*5$%&*11$%&*3$%&*4$%&*55"));
     }
+
+    @Test
+    public void TestAddWithMultipleDelimeters(){
+        Assert.assertEquals(78, StringCalculator.Add("//[;][*]\n5;11*3*4;55"));
+        Assert.assertEquals(123, StringCalculator.Add("//[*][$][,][.]\n1*2$3*4*5,6*7*8$9*0.5$11*3.4,55"));
+    }
 }
