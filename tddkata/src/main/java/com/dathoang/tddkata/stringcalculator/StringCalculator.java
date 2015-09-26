@@ -50,6 +50,10 @@ public class StringCalculator {
         return MakeFormatedDelimiter(delimiter);
     }
 
+    private static String MakeFormatedDelimiter(String delimiter) {
+        return MakeFormatedDelimiter(delimiter.toCharArray());
+    }
+
     private static String MakeFormatedDelimiter(char[] delimiter) {
         StringBuffer stringBuffer = new StringBuffer();
         for (char delimiterChar : delimiter){
@@ -68,7 +72,7 @@ public class StringCalculator {
     }
 
     private static String GetDefiniedDelimeter(String numbers) {
-        return REGEX_FORMATED_STRING + numbers.substring(BEGIN_SIMPLE_DELIMETER_INDEX, END_SIMPLE_DELIMETER_INDEX);
+        return MakeFormatedDelimiter(numbers.substring(BEGIN_SIMPLE_DELIMETER_INDEX, END_SIMPLE_DELIMETER_INDEX));
     }
 
     private static boolean HasSimpleDefinedDelimiter(String numbers) {
