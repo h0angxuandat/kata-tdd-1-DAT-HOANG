@@ -11,6 +11,7 @@ import java.util.List;
 public class StringCalculator {
 
     private static final String REGEX = "[,\n]";
+    public static final int MAX_RATE = 1000;
 
     public static int Add(String numbers) throws StringCalculatorException {
         if(null == numbers || "" == numbers){
@@ -50,7 +51,7 @@ public class StringCalculator {
             if(0 > numAsInt) {
                 hasNegative = true;
                 negativeNumbers.add(numAsInt);
-            } else if (!hasNegative){
+            } else if (!hasNegative && MAX_RATE >= numAsInt){
                 sum += new Integer(number);
             }
         }
