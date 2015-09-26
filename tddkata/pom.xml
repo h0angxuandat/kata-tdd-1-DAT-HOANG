@@ -32,6 +32,9 @@
                 <configuration>
                     <targetPercentage>100%</targetPercentage>
                     <generateHtml>true</generateHtml>
+                    <excludes>
+                        <exclude>**/exceptions/**</exclude>
+                    </excludes>
                 </configuration>
                 <executions>
                     <execution>
