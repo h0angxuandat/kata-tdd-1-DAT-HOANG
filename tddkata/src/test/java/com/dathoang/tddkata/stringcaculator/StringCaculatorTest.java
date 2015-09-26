@@ -1,6 +1,7 @@
 package com.dathoang.tddkata.stringcaculator;
 
 import com.dathoang.tddkata.stringcaculator.exceptions.StringCaculatorException;
+import com.googlecode.instinct.marker.annotate.Specification;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
@@ -52,7 +53,8 @@ public class StringCaculatorTest {
     }
 
     @Test
-    public void TestAddWithNegativeNumbers() {
+    @Specification(expectedException = StringCaculatorException.class)
+    public void TestAddWithNegativeNumbers() throws StringCaculatorException{
         expectedException.expect(StringCaculatorException.class);
         expectedException.expectMessage("Negative numbers are not allowed: [-7, -9]");
         StringCaculator.Add("1,-7,8,-9,11");
