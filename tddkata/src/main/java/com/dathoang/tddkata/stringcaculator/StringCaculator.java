@@ -12,7 +12,26 @@ public class StringCaculator {
             return 0;
         }
 
-        return GetSumFromArray(numbers.split(REGEX));
+        String delimiter = REGEX;
+
+        if(HasDefinedDelimiter(numbers)){
+            delimiter = GetDefiniedDelimeter(numbers);
+            numbers = GetStringOfNumbers(numbers);
+        }
+
+        return GetSumFromArray(numbers.split(delimiter));
+    }
+
+    private static String GetStringOfNumbers(String numbers) {
+        return numbers.substring(4, numbers.length());
+    }
+
+    private static String GetDefiniedDelimeter(String numbers) {
+        return "\\" + numbers.substring(2, 3);
+    }
+
+    private static boolean HasDefinedDelimiter(String numbers) {
+        return numbers.startsWith("//");
     }
 
     private static int GetSumFromArray(String[] numbers) {
