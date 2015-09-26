@@ -59,4 +59,10 @@ public class StringCalculatorTest {
         expectedException.expectMessage("Negative numbers are not allowed: [-7, -9]");
         StringCalculator.Add("1,-7,8,-9,11");
     }
+
+    @Test
+    public void TestAddWithBiggerOneThousandNumbers(){
+        Assert.assertEquals(5, StringCalculator.Add("3,7777,1,2222,1"));
+        Assert.assertEquals(16, StringCalculator.Add("//*\n5*1007*11*9999"));
+    }
 }
