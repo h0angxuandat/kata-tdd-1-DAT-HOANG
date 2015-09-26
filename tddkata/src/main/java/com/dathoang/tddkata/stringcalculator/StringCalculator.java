@@ -1,19 +1,18 @@
-package com.dathoang.tddkata.stringcaculator;
+package com.dathoang.tddkata.stringcalculator;
 
-import com.dathoang.tddkata.stringcaculator.exceptions.StringCaculatorException;
+import com.dathoang.tddkata.stringcalculator.exceptions.StringCalculatorException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Dat Hoang on 9/26/2015.
  */
-public class StringCaculator {
+public class StringCalculator {
 
     private static final String REGEX = "[,\n]";
 
-    public static int Add(String numbers) throws StringCaculatorException {
+    public static int Add(String numbers) throws StringCalculatorException {
         if(null == numbers || "" == numbers){
             return 0;
         }
@@ -57,7 +56,7 @@ public class StringCaculator {
         }
 
         if(hasNegative) {
-            throw new StringCaculatorException(negativeNumbers.toArray());
+            throw new StringCalculatorException(negativeNumbers.toArray());
         }
 
         return sum;
