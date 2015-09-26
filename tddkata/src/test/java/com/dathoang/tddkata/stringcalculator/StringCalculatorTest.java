@@ -66,4 +66,11 @@ public class StringCalculatorTest {
         Assert.assertEquals(5, StringCalculator.Add("3,7777,1,2222,1"));
         Assert.assertEquals(16, StringCalculator.Add("//*\n5*1007*11*9999"));
     }
+
+    @Test
+    public void TestAddWithAnyDelimeterWhichHasAnyLength(){
+        Assert.assertEquals(16, StringCalculator.Add("//[$$$]\n5$$$11"));
+        Assert.assertEquals(78, StringCalculator.Add("//[**]\n5**11**3**4**55"));
+        Assert.assertEquals(123, StringCalculator.Add("//[$%&*]\n1$%&*2$%&*3$%&*4$%&*5$%&*6$%&*7$%&*8$%&*9$%&*0$%&*5$%&*11$%&*3$%&*4$%&*55"));
+    }
 }
